@@ -56,7 +56,7 @@
 	</tr>
 	<tr>
 		<td><label>Document</label></td>
-		<td><input type="file" name="file" id="file"></input></td>
+		<td><input type="file" name="file" onchange="loadFile(event)" id="file"></input></td>
 	</tr>
 	<tr>
 		<td colspan="2">
@@ -66,6 +66,14 @@
 </table>
 <a href="${pageContext.request.contextPath}/imges.html">Images</a>
 <img alt="img" src="data:image/jpeg;base64,${imgCode}"/>
+<img id="output" width="200" />	
 </form:form>
+
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
 </body>
 </html>
